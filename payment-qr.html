@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armani - 扫码支付</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-image {
+            height: 32px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        .secure-checkout {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #4caf50;
+        }
+        
+        /* 主要内容区域 */
+        .payment-container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .order-total {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        /* 二维码区域 */
+        .qr-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px dashed #e0e0e0;
+            border-radius: 12px;
+            display: inline-block;
+            background: #fff;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        
+        .gr-code {
+            text-align: center;
+        }
+
+        .qr-image {
+            max-width: 250px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        
+        .payment-instructions {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .instructions-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        
+        .instructions-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+            color: #666;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 8px;
+        }
+        
+        /* 支付按钮 */
+        .pay-button {
+            width: 100%;
+            padding: 16px;
+            background: #ff6b00;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+        
+        .pay-button:hover {
+            background: #e65c00;
+        }
+        
+        .home-button {
+            display: inline-block;
+            margin-top: 15px;
+            color: #666;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .home-button:hover {
+            color: #ff6b00;
+            border-color: #ff6b00;
+        }
+        
+        /* 安全徽章 */
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .badge-icon {
+            font-size: 24px;
+            color: #4caf50;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .payment-container {
+                padding: 20px;
+            }
+            
+            .qr-code {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <div class="top-nav">
+            <div class="logo">
+                <img src="https://i.postimg.cc/wjHqs42m/Armani-logo-black.jpg" alt="Armani Logo" class="logo-image">
+                <span class="logo-text">ARMANI</span>
+            </div>
+            <div class="secure-checkout">
+                <i class="fas fa-lock"></i>
+                <span>安全支付</span>
+            </div>
+        </div>
+        
+        <!-- 支付二维码 -->
+        <div class="payment-container">
+            <h2 class="section-title">扫码支付</h2>
+            <p class="section-subtitle">请使用Touch 'n Go扫描下方二维码完成支付</p >
+            
+            <div class="order-total">
+                订单总额: <span id="orderTotal">RM 0.00</span>
+            </div>
+            
+            <div class="qr-container">
+                <div class="qr-code">
+                        <img src="https://i.postimg.cc/dV9vBRpN/E-TNG-QR.jpg" alt="Touch 'n Go支付二维码" class="qr-image">
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-instructions">
+                <div class="instructions-title">支付说明:</div>
+                <ol class="instructions-list">
+                    <li>打开Touch 'n Go电子钱包应用</li>
+                    <li>点击"扫描"功能</li>
+                    <li>扫描上方二维码</li>
+                    <li>确认支付金额和商家信息</li>
+                    <li>完成支付</li>
+                </ol>
+            </div>
+            
+            <button class="pay-button" id="confirmPayBtn">确认支付</button>
+            <a href=" " class="home-button">返回首页</a >
+        </div>
+        
+        <!-- 安全徽章 -->
+        <div class="security-badges">
+            <div class="badge">
+                <i class="fas fa-lock badge-icon"></i>
+                <span>安全支付</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-shield-alt badge-icon"></i>
+                <span>数据加密</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-user-shield badge-icon"></i>
+                <span>隐私保护</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 从localStorage获取订单总金额
+        // 从localStorage获取订单总金额（包含运费）
+        const totalWithShipping = localStorage.getItem('totalWithShipping') || 0;
+        const orderTotal = document.getElementById('orderTotal');
+
+        // 显示订单总金额（包含运费）
+        orderTotal.textContent = `RM ${parseFloat(totalWithShipping).toFixed(2)}`;
+        
+        // 确认支付按钮点击事件
+        document.getElementById('confirmPayBtn').addEventListener('click', function() {
+            // 模拟支付成功
+            alert('支付成功！感谢您的购物。');
+            
+            // 清空购物车
+            localStorage.removeItem('cartItems');
+            localStorage.removeItem('cartTotal');
+            
+            // 跳转回首页
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
