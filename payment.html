@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Armani - 订单确认</title>
+    <title>Armani - Order Confirmation Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -237,49 +237,49 @@
     <div class="container">
         <!-- 订单摘要 -->
         <div class="order-summary">
-            <h3 class="summary-title">订单摘要</h3>
+            <h3 class="summary-title">Order Summary</h3>
             <div class="order-items" id="orderItems">
                 <!-- 订单项目将动态生成 -->
             </div>
             
             <div class="price-breakdown">
                 <div class="price-row">
-                    <span class="price-label">商品小计</span>
+                    <span class="price-label">Item Subtotal</span>
                     <span class="price-value" id="subtotal">RM 0.00</span>
                 </div>
                 <div class="price-row">
-                    <span class="price-label">运费 (每个商品RM 5.00)</span>
+                    <span class="price-label">Dlivery Fee (Each ItemRM 5.00)</span>
                     <span class="price-value" id="shipping">RM 0.00</span>
                 </div>
                 <div class="price-row">
-                    <span class="price-label">税费</span>
+                    <span class="price-label">Tax</span>
                     <span class="price-value">RM 0.00</span>
                 </div>
                 <div class="price-row">
-                    <span class="price-label">折扣</span>
+                    <span class="price-label">Discount</span>
                     <span class="price-value" style="color: #4caf50;">-RM 0.00</span>
                 </div>
             </div>
             
             <div class="total-row">
-                <span>总计</span>
+                <span>Total</span>
                 <span id="orderTotal">RM 0.00</span>
             </div>
             
-            <button class="checkout-btn" id="checkoutBtn">点击付款</button>
+            <button class="checkout-btn" id="checkoutBtn">Payment</button>
         </div>
         
         <!-- 客户支持 -->
         <div class="support-card">
-            <h3 class="section-title">需要帮助？</h3>
-            <p style="margin-bottom: 16px; color: #666;">如果您在购买过程中遇到任何问题，请联系我们的客户支持团队。</p >
+            <h3 class="section-title">Need Help？</h3>
+            <p style="margin-bottom: 16px; color: #666;">If you experience any problems while making your purchase, please don’t hesitate to contact our customer support team.</p >
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
                 <i class="fas fa-phone" style="color: #ff6b00;"></i>
                 <span>+60 11-2823 9705</span>
             </div>
             <div style="display: flex; align-items: center; gap: 10px;">
                 <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-                <span>WhatsApp客服</span>
+                <span>WhatsApp Service</span>
                 <a href="https://wa.me/601128239705" style="display: block; margin-top: 10px; padding: 10px 15px; background-color: #25D366; color: white; text-decoration: none; border-radius: 5px; text-align: center; width: 120px;">联系客服</a>
             </div>
         </div>
@@ -305,7 +305,7 @@
             orderItems.innerHTML = '';
             
             if (cartItems.length === 0) {
-                orderItems.innerHTML = '<p>您的购物车是空的</p >';
+                orderItems.innerHTML = '<p>Your Cart Is Empty</p >';
                 return;
             }
             
