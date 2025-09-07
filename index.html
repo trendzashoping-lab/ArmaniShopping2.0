@@ -507,6 +507,30 @@
             .logo h1 {
                 font-size: 18px;
             }
+
+            /* 加载动画效果 */
+.payment-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.payment-btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
         }
     </style>
 </head>
