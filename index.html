@@ -475,17 +475,22 @@
                 height: 100px;
             }
 
-            /* 带图标的按钮 */
-            .payment-btn.with-icon {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-            }
-
-            .payment-btn.with-icon i {
-                font-size: 18px;
-            }
+            /* 基础支付按钮样式 */
+.payment-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
             
             /* 移动端轮播按钮始终可见 */
             .carousel-btn {
